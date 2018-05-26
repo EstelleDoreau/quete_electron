@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/photon.min.css">
+
+    <!-- Javascript -->
+    <script src="js/menu.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="window">
+
+      <!-- .toolbar-header sits at the top of your app -->
+      <header class="toolbar toolbar-header">
+        <h1 class="title">C'est l'heure de l'apéro</h1>
+      </header>
+
+      <!-- Your app's content goes inside .window-content -->
+      <div class="window-content">
+        <div class="pane-group">
+          <div class="pane pane-sm sidebar">
+            <nav class="nav-group">
+              <h5 class="nav-group-title">Favorites</h5>
+              <span class="nav-group-item active">
+                <span class="icon icon-users"></span>
+                Les potos
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-home"></span>
+                A domicile
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-cup"></span>
+                Du boire
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-sound"></span>
+                La musique
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-leaf"></span>
+                La bouffe
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-bucket"></span>
+                La fin de soirée
+              </span>
+            </nav>
+          </div>
+
+          <div class="pane">
+            <img src="img/alf.png" alt="Alf"/>
+            <h3>
+              <div id="div_horloge"></div>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      window.onload=function() {
+        horloge('div_horloge');
+      };
+
+      function horloge(el) {
+        if(typeof el=="string") { el = document.getElementById(el); }
+        function actualiser() {
+          var date = new Date();
+          var str = date.getHours();
+          str += ':'+(date.getMinutes()<10?'0':'')+date.getMinutes();
+          str += ':'+(date.getSeconds()<10?'0':'')+date.getSeconds();
+          el.innerHTML = str;
+        }
+        actualiser();
+        setInterval(actualiser,1000);
+      }
+    </script>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+  </body>
+</html>
